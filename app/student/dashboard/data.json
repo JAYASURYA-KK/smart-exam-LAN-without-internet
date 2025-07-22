@@ -1,0 +1,105 @@
+{
+  "title": "Python Basic ABC",
+  "description": "This exam covers basic Python concepts, including functions, built-in methods, and simple coding exercises.",
+  "duration": 60,
+  "status": "active",
+  "questions": [
+    {
+      "question": "What does the 'len()' function in Python return?",
+      "options": [
+        "The length of an object",
+        "The size of memory used",
+        "A built-in constant",
+        "None"
+      ],
+      "correctAnswer": 0,
+      "explanation": "It returns the number of items in a non-empty container, such as a list or string.",
+      "points": 1,
+      "type": "mcq",
+      "_id": "687cdfa0d93fd4786f77ce9c",
+      "questionOrder": 1
+    },
+    {
+      "question": "What is the purpose of the 'range()' function in Python?",
+      "options": [
+        "To create an empty iterable",
+        "To generate a sequence of numbers starting from a given number",
+        "To repeat a string",
+        "To calculate the area of a shape"
+      ],
+      "correctAnswer": 1,
+      "explanation": "It generates a sequence of numbers from start (default 0) up to end-1.",
+      "points": 1,
+      "type": "mcq",
+      "_id": "687cdfa0d93fd4786f77ce9d",
+      "questionOrder": 2
+    },
+    {
+      "question": "Write a function that doubles a number.",
+      "starterCode": "def solve(input):\n    # Your code here\n    return input * 2",
+      "testCases": [
+        {
+          "input": 5,
+          "expectedOutput": 10,
+          "points": 1,
+          "description": "Basic test case",
+          "isHidden": false
+        },
+        {
+          "input": 0,
+          "expectedOutput": 0,
+          "points": 1,
+          "description": "Edge case with zero",
+          "isHidden": false
+        },
+        {
+          "input": 100,
+          "expectedOutput": 200,
+          "points": 3,
+          "description": "Large input",
+          "isHidden": true
+        }
+      ],
+      "points": 5,
+      "type": "coding",
+      "language": "python",
+      "_id": "687cdfa0d93fd4786f77cea1",
+      "questionOrder": 3
+    },
+    {
+      "question": "Write a function that returns the length of a string.",
+      "starterCode": "def solve(input):\n    # Your code here\n    return len(input)",
+      "testCases": [
+        {
+          "input": "hello",
+          "expectedOutput": 5,
+          "points": 2,
+          "description": "Basic string",
+          "isHidden": false
+        },
+        {
+          "input": "",
+          "expectedOutput": 0,
+          "points": 1,
+          "description": "Empty string",
+          "isHidden": false
+        },
+        {
+          "input": "a",
+          "expectedOutput": 1,
+          "points": 2,
+          "description": "Single character",
+          "isHidden": true
+        }
+      ],
+      "points": 5,
+      "type": "coding",
+      "language": "python",
+      "_id": "687cdfa0d93fd4786f77cea2",
+      "questionOrder": 4
+    }
+  ],
+  "createdBy": "687c70965f6034ad42a6d561",
+  "createdAt": "2025-07-20T12:22:56.321Z",
+  "updatedAt": "2025-07-20T12:23:05.901Z"
+}
