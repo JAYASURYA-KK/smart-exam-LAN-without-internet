@@ -1,432 +1,278 @@
-# 🎓 Secure Offline LAN-Based Exam System
+# AI-Powered MCQ Exam System
 
-A comprehensive examination system built with **Next.js**, **MongoDB**, and **TypeScript** that operates entirely offline within a local network. Perfect for schools, training centers, and organizations requiring secure, controlled testing environments without internet dependency.
+A modern, AI-powered Multiple Choice Question (MCQ) exam system built with Next.js, React, and local LLM integration using Ollama. This system allows teachers to create AI-generated exams and students to take them in a secure, timed environment.
 
-## ✨ Key Features
+![Home Page](screenshots/home.png)
 
-### 🔐 Security & Authentication
-- **Role-based Access Control**: Separate interfaces for teachers and students
-- **Secure Authentication**: JWT-based session management with bcrypt password hashing
-- **Session Monitoring**: Real-time tracking of user sessions and activity
-- **Data Protection**: All data stored locally with no external transmission
+## Features
 
-### 📚 Exam Management
-- **Dynamic Exam Creation**: Teachers can create exams with multiple-choice questions
-- **Real-time Distribution**: Instantly activate and distribute exams to all students
-- **Flexible Configuration**: Customizable duration, points, and question ordering
-- **Live Monitoring**: Track student progress and submissions in real-time
+### 🎓 For Teachers
+- **AI-Powered Question Generation**: Automatically generate MCQ questions using local LLM
+- **Exam Management**: Create, edit, and manage exams with ease
+- **Real-time Monitoring**: Monitor student progress during exams
+- **Detailed Analytics**: View comprehensive exam results and statistics
+- **Flexible Configuration**: Set exam duration, difficulty levels, and question counts
 
-### 👨‍🎓 Student Experience
-- **Intuitive Interface**: Clean, distraction-free exam environment
-- **Question Navigation**: Easy movement between questions with progress tracking
-- **Auto-save**: Answers saved automatically to prevent data loss
-- **Timer Integration**: Visual countdown with automatic submission
+![Teacher Dashboard](screenshots/teacherdashboard.png)
 
-### 📊 Results & Analytics
-- **Instant Scoring**: Automatic calculation and display of results
-- **Detailed Reports**: Comprehensive analytics and performance metrics
-- **Export Capabilities**: Generate reports for further analysis
-- **Historical Data**: Track performance over time
+### 📚 For Students
+- **Intuitive Exam Interface**: Clean, distraction-free exam taking experience
+- **Real-time Timer**: Visual countdown timer with automatic submission
+- **Question Navigation**: Easy navigation between questions with progress tracking
+- **Instant Results**: View scores and performance immediately after submission
+- **AI Chat Support**: Get help from AI assistant during studies
 
-## 🤖 AI-Powered Features
+![Student Dashboard](screenshots/studentdashboard.png)
 
-### Intelligent Question Generation
-- **Automatic MCQ Creation**: Generate multiple-choice questions on any subject
-- **Coding Problem Generation**: Create programming challenges with test cases
-- **Difficulty Scaling**: Easy, medium, and hard question levels
-- **Subject Specialization**: Tailored questions for specific topics
+### 🤖 AI Integration
+- **Local LLM Support**: Uses Ollama for privacy-focused AI question generation
+- **Multiple Difficulty Levels**: Easy, Medium, and Hard question generation
+- **Subject Flexibility**: Generate questions for any subject or topic
+- **Quality Assurance**: AI-generated questions include explanations and validation
 
-### AI Teaching Assistant
-- **Teacher Chatbot**: Help with exam creation, student management, and educational insights
-- **Student Support**: Study assistance, concept explanations, and exam preparation tips
-- **Context-Aware**: Understands the current dashboard context for relevant help
-
-### Code Execution Engine
-- **Multi-Language Support**: Python and Node.js code execution
-- **Automated Testing**: Run student code against predefined test cases
-- **Real-Time Feedback**: Instant code execution results and error messages
-- **Secure Sandboxing**: Safe code execution in isolated environment
-
-### Enhanced Analytics
-- **AI-Generated Insights**: Automatic analysis of student performance
-- **Personalized Recommendations**: Study suggestions based on exam results
-- **Performance Trends**: Track improvement over time with AI analysis
-
-## 🛠️ Technology Stack
+## Technology Stack
 
 - **Frontend**: Next.js 14, React 18, TypeScript
-- **Backend**: Next.js API Routes, Node.js
-- **Database**: MongoDB with optimized indexing
-- **Authentication**: JWT, bcryptjs
-- **UI Framework**: Tailwind CSS, shadcn/ui
-- **Icons**: Lucide React
+- **Styling**: Tailwind CSS, shadcn/ui components
+- **AI Integration**: Ollama (Local LLM)
+- **Authentication**: JWT-based authentication
+- **Database**: MongoDB (configurable)
 
-## 🚀 Quick Start
 
-### Prerequisites
-- Node.js 18 or higher
-- MongoDB 6.0 or higher
-- Modern web browser
+## Prerequisites
 
-### Installation
+Before running this application, make sure you have:
+
+- Node.js 18+ installed
+- Ollama installed and running locally
+- A compatible LLM model (e.g., llama3.2, mistral, etc.)
+
+### Installing Ollama
+
+1. Visit [Ollama's official website](https://ollama.ai) and download the installer
+2. Install Ollama on your system
+3. Pull a compatible model:
+   \`\`\`bash
+   ollama pull llama3.2
+   \`\`\`
+4. Start the Ollama service:
+   \`\`\`bash
+   ollama serve
+   \`\`\`
+
+## Installation
 
 1. **Clone the repository**
    \`\`\`bash
-   git clone <repository-url>
-   cd secure-offline-exam-system
+   git clone 
+   cd ai-mcq-exam-system
    \`\`\`
 
 2. **Install dependencies**
    \`\`\`bash
    npm install
+   # or
+   yarn install
+   # or
+   pnpm install
    \`\`\`
 
-3. **Configure environment**
-   \`\`\`bash
-   cp .env.example .env.local
-   \`\`\`
+3. **Set up environment variables**
    
-   Edit `.env.local`:
+   Create a \`.env.local\` file in the root directory and add the following variables:
+
    \`\`\`env
-   # For cloud MongoDB (testing)
-   MONGODB_URI=mongodb+srv://surya:surya%402007@cluster0.vdqnm6e.mongodb.net/secure_exam_system?retryWrites=true&w=majority&appName=Cluster0
+   # Ollama Configuration
+   OLLAMA_BASE_URL=http://localhost:11434
+   OLLAMA_MODEL=llama3.2
    
-   # For local MongoDB (production)
-   # MONGODB_URI=mongodb://localhost:27017/secure_exam_system
+   # Database Configuration
+   MONGODB_URI=mongodb://localhost:27017/exam-system
    
-   JWT_SECRET=your-super-secret-jwt-key
-   PORT=3000
+   # Authentication
+   JWT_SECRET=your-super-secret-jwt-key-here
+   NEXTAUTH_SECRET=your-nextauth-secret-here
+   NEXTAUTH_URL=http://localhost:3000
+   
+   # Application Configuration
+   NODE_ENV=development
    \`\`\`
 
-4. **Initialize the system**
+4. **Start the development server**
    \`\`\`bash
    npm run dev
-   \`\`\`
-   
-   Visit `http://localhost:3000/setup` to initialize the database
-
-5. **Start using the system**
-   \`\`\`bash
-   # Development
-   npm run dev
-   
-   # Production
-   npm run build
-   npm start
+   # or
+   yarn dev
+   # or
+   pnpm dev
    \`\`\`
 
-## 🔧 Offline Deployment Guide
+5. **Open your browser**
+   
+   Navigate to [http://localhost:3000](http://localhost:3000) to see the application.
 
-### Step 1: Setup Local MongoDB
+## Environment Variables
 
-#### Windows
-1. Download MongoDB Community Server
-2. Install with default settings
-3. Start MongoDB service
+### Required Variables
 
-#### macOS
-\`\`\`bash
-brew tap mongodb/brew
-brew install mongodb-community
-brew services start mongodb/brew/mongodb-community
-\`\`\`
+| Variable | Description | Example |
+|----------|-------------|---------|
+| \`OLLAMA_BASE_URL\` | URL where Ollama service is running | \`http://localhost:11434\` |
+| \`OLLAMA_MODEL\` | LLM model to use for question generation | \`llama3.2\` |
+| \`MONGODB_URI\` | MongoDB connection string | \`mongodb://localhost:27017/exam-system\` |
+| \`JWT_SECRET\` | Secret key for JWT token signing | \`your-super-secret-jwt-key\` |
 
-#### Linux (Ubuntu/Debian)
-\`\`\`bash
-sudo apt-get install mongodb
-sudo systemctl start mongodb
-sudo systemctl enable mongodb
-\`\`\`
+### Optional Variables
 
-### Step 2: Configure for Offline Use
+| Variable | Description | Default |
+|----------|-------------|---------|
+| \`NEXTAUTH_SECRET\` | NextAuth.js secret for session encryption | Auto-generated |
+| \`NEXTAUTH_URL\` | Base URL for authentication callbacks | \`http://localhost:3000\` |
+| \`NODE_ENV\` | Environment mode | \`development\` |
 
-Update `.env.local`:
-\`\`\`env
-MONGODB_URI=mongodb://localhost:27017/secure_exam_system
-NEXT_PUBLIC_API_URL=http://192.168.1.100:3000
-\`\`\`
-
-### Step 3: Network Setup
-
-#### Create Wi-Fi Hotspot
-
-**Windows:**
-\`\`\`cmd
-netsh wlan set hostednetwork mode=allow ssid="ExamNetwork" key="exampass123"
-netsh wlan start hostednetwork
-\`\`\`
-
-**macOS:**
-System Preferences → Sharing → Internet Sharing
-
-**Linux:**
-\`\`\`bash
-sudo apt-get install hostapd dnsmasq
-# Configure hostapd.conf
-sudo systemctl start hostapd
-\`\`\`
-
-### Step 4: Deploy Application
-
-\`\`\`bash
-# Build for production
-npm run build
-
-# Start the server
-npm start
-\`\`\`
-
-### Step 5: Student Access
-
-1. Students connect to "ExamNetwork" Wi-Fi
-2. Open browser and go to `http://192.168.1.100:3000`
-3. Login with provided credentials
-4. Take available exams
-
-## 👥 Default Credentials
-
-### Teacher Account
-- **Username**: `admin`
-- **Password**: `admin123`
-
-### Student Accounts
-- **student1** / `student123` (ID: STU001)
-- **student2** / `student123` (ID: STU002)
-- **student3** / `student123` (ID: STU003)
-
-## 📖 Usage Guide
+## Usage
 
 ### For Teachers
 
-1. **Login** with teacher credentials
-2. **Create Exam**:
-   - Set title, description, and duration
-   - Add multiple-choice questions with points
-   - Configure correct answers
-3. **Activate Exam** to make it available to students
-4. **Monitor Progress** in real-time dashboard
-5. **Review Results** and generate reports
+1. **Register/Login** as a teacher
+2. **Create New Exam**:
+   - Fill in exam details (title, description, duration)
+   - Specify subject and difficulty level
+   - Set number of questions
+   - Click "Generate MCQ Exam with AI"
+3. **Review Generated Questions**:
+   - Preview all generated questions
+   - Remove unwanted questions if needed
+   - Click "Create Exam" to finalize
+4. **Manage Exams**:
+   - Activate/deactivate exams
+   - Monitor student progress
+   - View detailed results and analytics
 
 ### For Students
 
-1. **Connect** to the exam network
-2. **Login** with provided credentials
-3. **Select Exam** from available list
-4. **Take Exam**:
-   - Read questions carefully
-   - Select answers using radio buttons
-   - Navigate between questions
-   - Submit when complete
-5. **View Results** (if enabled)
+1. **Register/Login** as a student
+2. **View Available Exams** on the dashboard
+3. **Start Exam**:
+   - Click "Start Exam" on any available exam
+   - Read instructions carefully
+   - Answer questions within the time limit
+4. **Submit Exam**:
+   - Review answers using question navigation
+   - Submit before time runs out
+   - View results immediately
 
-## 🏗️ Project Structure
+## API Endpoints
 
-\`\`\`
-secure-offline-exam-system/
-├── app/                    # Next.js app directory
-│   ├── api/               # API routes
-│   │   ├── auth/          # Authentication endpoints
-│   │   ├── exams/         # Exam management
-│   │   ├── students/      # Student management
-│   │   └── submissions/   # Exam submissions
-│   ├── teacher/           # Teacher dashboard
-│   ├── student/           # Student interface
-│   ├── setup/             # System setup page
-│   └── page.tsx           # Landing page
-├── lib/                   # Utility functions
-│   ├── mongodb.ts         # Database connection
-│   ├── auth.ts            # Authentication utilities
-│   └── models/            # Data models
-├── components/            # Reusable UI components
-├── scripts/               # Setup and utility scripts
-└── public/                # Static assets
-\`\`\`
+### Authentication
+- \`POST /api/auth/register\` - User registration
+- \`POST /api/auth/login\` - User login
+- \`POST /api/auth/logout\` - User logout
 
-## 🔒 Security Features
+### AI Integration
+- \`POST /api/ai/generate-questions\` - Generate MCQ questions
+- \`POST /api/ai/chat\` - AI chat assistance
 
-### Data Protection
-- **Local Storage**: All data remains on local network
-- **Encrypted Passwords**: bcrypt hashing for user passwords
-- **Secure Sessions**: JWT tokens with expiration
-- **Access Control**: Role-based permissions
+### Exam Management
+- \`GET /api/exams\` - Get all exams (teacher)
+- \`POST /api/exams\` - Create new exam
+- \`GET /api/exams/available\` - Get available exams (student)
+- \`PUT /api/exams/:id\` - Update exam
+- \`DELETE /api/exams/:id\` - Delete exam
 
-### Network Security
-- **Isolated Network**: No external internet access required
-- **Encrypted Communication**: HTTPS support for production
-- **Session Management**: Automatic timeout and cleanup
-- **Audit Trail**: Complete logging of user activities
+### Submissions
+- \`POST /api/submissions\` - Submit exam answers
+- \`GET /api/submissions/student\` - Get student submissions
+- \`GET /api/submissions/exam/:id\` - Get exam submissions (teacher)
 
-## 📊 Performance Specifications
+## Deployment
 
-### Scalability
-- **Concurrent Users**: Up to 100 students simultaneously
-- **Response Time**: <200ms for typical operations
-- **Database**: Optimized MongoDB with proper indexing
-- **Network**: Efficient local network communication
+### Vercel Deployment
 
-### System Requirements
+1. **Push to GitHub**
+   \`\`\`bash
+   git add .
+   git commit -m "Initial commit"
+   git push origin main
+   \`\`\`
 
-#### Server (Teacher's PC)
-- **CPU**: Dual-core 2.0GHz minimum
-- **RAM**: 4GB minimum, 8GB recommended
-- **Storage**: 2GB free space
-- **Network**: Wi-Fi or Ethernet capability
+2. **Deploy to Vercel**
+   - Connect your GitHub repository to Vercel
+   - Add environment variables in Vercel dashboard
+   - Deploy automatically
 
-#### Client (Student Devices)
-- **Any device** with modern web browser
-- **RAM**: 1GB minimum
-- **Network**: Wi-Fi connection
-- **No software installation** required
+3. **Configure Ollama for Production**
+   - Set up Ollama on a server or cloud instance
+   - Update \`OLLAMA_BASE_URL\` to point to your production Ollama instance
 
-## 🛠️ Development
+### Docker Deployment
 
-### API Endpoints
+\`\`\`dockerfile
+# Dockerfile example
+FROM node:18-alpine
 
-- `POST /api/auth/login` - User authentication
-- `POST /api/auth/signup` - User registration
-- `GET /api/exams` - Fetch all exams (teacher)
-- `GET /api/exams/available` - Available exams (student)
-- `POST /api/exams` - Create new exam
-- `POST /api/exams/[id]/activate` - Activate exam
-- `GET /api/students` - Fetch all students
-- `GET /api/submissions` - Fetch all submissions
-- `POST /api/submissions` - Submit exam answers
-- `POST /api/setup` - Initialize system
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
 
-### Database Schema
+COPY . .
+RUN npm run build
 
-#### Users Collection
-\`\`\`javascript
-{
-  _id: ObjectId,
-  username: String,
-  password: String, // bcrypt hashed
-  fullName: String,
-  studentId: String, // for students only
-  role: "teacher" | "student",
-  isOnline: Boolean,
-  createdAt: Date,
-  updatedAt: Date
-}
+EXPOSE 3000
+CMD ["npm", "start"]
 \`\`\`
 
-#### Exams Collection
-\`\`\`javascript
-{
-  _id: ObjectId,
-  title: String,
-  description: String,
-  duration: Number, // minutes
-  status: "draft" | "active" | "completed",
-  questions: [{
-    _id: ObjectId,
-    question: String,
-    options: [String],
-    correctAnswer: Number,
-    points: Number,
-    questionOrder: Number
-  }],
-  createdBy: ObjectId,
-  createdAt: Date,
-  updatedAt: Date
-}
-\`\`\`
-
-#### Submissions Collection
-\`\`\`javascript
-{
-  _id: ObjectId,
-  studentId: ObjectId,
-  examId: ObjectId,
-  answers: [{
-    questionId: String,
-    answer: Number
-  }],
-  score: Number,
-  totalPoints: Number,
-  submittedAt: Date,
-  timeTaken: Number // seconds
-}
-\`\`\`
-
-## 🎯 Use Cases
-
-### Educational Institutions
-- **Rural Schools**: No internet dependency required
-- **Computer Labs**: Controlled testing environment
-- **Classroom Assessments**: Quick setup and deployment
-- **Standardized Testing**: Secure, monitored examinations
-
-### Corporate Training
-- **Employee Assessments**: Internal skill evaluation
-- **Compliance Training**: Regulatory requirement testing
-- **Certification Programs**: Professional development
-- **Onboarding**: New employee evaluations
-
-### Special Scenarios
-- **Remote Locations**: Areas with limited connectivity
-- **High-Security Environments**: Classified or sensitive testing
-- **Emergency Situations**: Backup testing solutions
-- **Offline Events**: Conferences and workshops
-
-## 🔧 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
-#### MongoDB Connection Failed
-\`\`\`bash
-# Check MongoDB status
-sudo systemctl status mongod
+1. **"Failed to generate questions"**
+   - Ensure Ollama is running: \`ollama serve\`
+   - Check if the model is available: \`ollama list\`
+   - Verify \`OLLAMA_BASE_URL\` in \`.env.local\`
 
-# Start MongoDB
-sudo systemctl start mongod
-\`\`\`
+2. **Connection refused errors**
+   - Check if Ollama is accessible at the configured URL
+   - Try: \`curl http://localhost:11434/api/version\`
 
-#### Students Can't Connect
-\`\`\`bash
-# Check firewall
-sudo ufw allow 3000
+3. **Model not found**
+   - Pull the required model: \`ollama pull llama3.2\`
+   - Update \`OLLAMA_MODEL\` in \`.env.local\`
 
-# Verify server is running
-netstat -an | grep :3000
-\`\`\`
+4. **Authentication issues**
+   - Verify \`JWT_SECRET\` is set
+   - Clear browser cookies and try again
 
-#### Performance Issues
-\`\`\`bash
-# Monitor system resources
-top
-htop
+### Performance Tips
 
-# Check MongoDB performance
-mongostat
-\`\`\`
+- Use faster models like \`llama3.2:8b\` for better response times
+- Adjust Ollama's \`num_ctx\` parameter for longer contexts
+- Consider using GPU acceleration for Ollama
 
-## 📞 Support & Contributing
+## Contributing
 
-### Getting Help
-- **Documentation**: Comprehensive guides available
-- **Issues**: GitHub issue tracking
-- **Community**: Active developer community
-
-### Contributing
 1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
+2. Create a feature branch: \`git checkout -b feature/new-feature\`
+3. Commit changes: \`git commit -am 'Add new feature'\`
+4. Push to branch: \`git push origin feature/new-feature\`
+5. Submit a Pull Request
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+## Support
 
-- **Next.js Team** for the amazing framework
-- **MongoDB** for reliable database solutions
-- **shadcn/ui** for beautiful UI components
-- **Tailwind CSS** for utility-first styling
-- **Lucide** for consistent iconography
+For support and questions:
+- Create an issue on GitHub
+- Check the troubleshooting section above
+- Review Ollama documentation for LLM-related issues
 
----
+## Acknowledgments
 
-**Perfect for**: Educational institutions, training centers, corporate assessments, and any scenario requiring secure, offline digital examinations with professional-grade reliability and security.
+- [Ollama](https://ollama.ai) for local LLM integration
+- [shadcn/ui](https://ui.shadcn.com) for beautiful UI components
+- [Next.js](https://nextjs.org) for the amazing React framework
+- [Tailwind CSS](https://tailwindcss.com) for utility-first styling
+\`\`\`
+
