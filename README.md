@@ -1,4 +1,4 @@
-# AI-Powered MCQ Exam System  A modern, AI-powered Multiple Choice Question (MCQ) exam system built with Next.js, React, and local LLM integration using Ollama. This system allows teachers to create AI-generated exams and students to take them in a secure, timed environment.
+## AI-Powered MCQ Exam System  A modern, AI-powered Multiple Choice Question (MCQ) exam system built with Next.js, React, and local LLM integration using Ollama. This system allows teachers to create AI-generated exams and students to take them in a secure, timed environment.
 
 ![Home Page](screenshots/home.png)
 
